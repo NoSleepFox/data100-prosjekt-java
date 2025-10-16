@@ -42,12 +42,5 @@ public class DayMain {
         System.out.println("i)");
         double average_power_usage = DailyPower.findAvgPower(powerusage_day);
         System.out.println("Det gjennomsnitlige strømforbruket var på " + average_power_usage + " kWh");
-        /*
-        TODO
-
-         Write code that tests the methods you implement in the DailyPower class
-         Remember to teste the methods as you implement them
-         Remember to also to check that you get the expected results
-         */
     }
 }

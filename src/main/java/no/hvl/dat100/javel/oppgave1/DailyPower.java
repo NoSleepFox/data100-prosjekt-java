@@ -26,6 +26,7 @@ public class DailyPower {
         for (double selected_usage : usage) {
             sum += selected_usage;
         }
+        sum = Math.round(sum * 100.0) / 100.0;
         return sum;
     }
 
@@ -36,7 +37,7 @@ public class DailyPower {
         for (int i = 0; i < usage.length; i++) {
             price += usage[i] * prices[i];
         }
-
+        price = Math.round(price * 100.0) / 100.0;
         return price;
     }
 
@@ -63,7 +64,7 @@ public class DailyPower {
         for (int i = 0; i < usage.length; i++) {
             support += getSupport(usage[i], prices[i]);
         }
-
+        support = Math.round(support * 100.0) / 100.0;
         return support;
     }
 
@@ -75,12 +76,13 @@ public class DailyPower {
         double price = 0;
 
         for (double u : usage) {
-            price = u * NORGESPRIS_KWH;
+            price += u * NORGESPRIS_KWH;
         }
+        price = Math.round(price * 100.0) / 100.0;
         return price;
     }
 
-    // g) compute peak usage during a single day
+    // h) compute peak usage during a single day
     public static double findPeakUsage(double[] usage) {
 
         double temp_max = 0;
@@ -103,6 +105,7 @@ public class DailyPower {
             i++;
         }
         average = sum / i;
+        average = Math.round(average * 100.0) / 100.0;
         return average;
     }
 }
