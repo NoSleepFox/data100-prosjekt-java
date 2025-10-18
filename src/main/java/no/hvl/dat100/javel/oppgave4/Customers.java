@@ -9,18 +9,20 @@ public class Customers {
     // a) Complete constructor
     public Customers(int size) {
 
-        // TODO
+        customers = new Customer[size];
 
     }
 
     // b) count number of non-null references
     public int countNonNull() {
 
-
         int count = 0;
 
-        // TODO
-
+        for (Customer i : customers) {
+            if (!(i == null)) {
+                count++;
+            }
+        }
         return count;
     }
 
@@ -30,8 +32,12 @@ public class Customers {
         boolean funnet = false;
         Customer c = null;
 
-        // TODO
-
+        for (Customer i : customers) {
+            if (i.getCustomer_id() == customer_id) {
+                c = i;
+                return c;
+            }
+        }
         return c;
     }
 
@@ -40,8 +46,13 @@ public class Customers {
 
         boolean inserted = false;
 
-        // TODO
-
+        for (int i = 0; i < customers.length; i++) {
+            if (customers[i] == null) {
+                customers[i] = c;
+                inserted = true;
+                return inserted;
+            }
+        }
         return inserted;
     }
 
@@ -51,8 +62,13 @@ public class Customers {
         boolean deleted = false;
         Customer c = null;
 
-        // TODO
-
+        for (int i = 0; i < customers.length; i++) {
+            if (customers[i].getCustomer_id() == customer_id) {
+                c = customers[i];
+                customers[i] = null;
+                return c;
+            }
+        }
         return c;
     }
 
@@ -61,7 +77,17 @@ public class Customers {
 
         Customer[] customers = null;
 
-        // TODO
+        int number_customers = countNonNull();
+        if (!(number_customers > 0)) {
+            return customers;
+        }
+        customers = new Customer[number_customers];
+        int place = 0;
+        for (Customer i : this.customers) {
+            if (!(i == null)) {
+                customers[place++] = i;
+            }
+        }
 
         return customers;
     }

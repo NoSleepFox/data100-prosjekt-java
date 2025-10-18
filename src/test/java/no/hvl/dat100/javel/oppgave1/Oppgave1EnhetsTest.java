@@ -66,8 +66,8 @@ class Oppgave1EnhetsTest {
     @Test
     void testComputePowerUsage() {
         double sum = 32.99;
-        double m_sum = DailyPower.computePowerUsage(test_powerusage);
-        assertEquals(sum, m_sum);
+        double t_sum = DailyPower.computePowerUsage(test_powerusage);
+        assertEquals(sum, t_sum);
     }
 
     // oppgave d)
@@ -82,31 +82,31 @@ class Oppgave1EnhetsTest {
     @Test
     void testComputePowerSupport() {
         double power_support = 27.95;
-        double m_power_support = DailyPower.computePowerSupport(test_powerusage, test_powerprices);
-        assertEquals(power_support, m_power_support);
+        double t_power_support = DailyPower.computePowerSupport(test_powerusage, test_powerprices);
+        assertEquals(power_support, t_power_support);
     }
 
     // oppgave g)
     @Test
     void testComputeNorgesPrice() {
         double total_price = 16.49;
-        double m_total_price = DailyPower.computeNorgesPrice(test_powerusage);
-        assertEquals(total_price, m_total_price);
+        double t_total_price = DailyPower.computeNorgesPrice(test_powerusage);
+        assertEquals(total_price, t_total_price);
     }
 
     // oppgave h) 
     @Test
     void testFindPeakUsage() {
         double peak_usage = 2.99;
-        double m_peak_usage = DailyPower.findPeakUsage(test_powerusage);
-        assertEquals(peak_usage, m_peak_usage);
+        double t_peak_usage = DailyPower.findPeakUsage(test_powerusage);
+        assertEquals(peak_usage, t_peak_usage);
     }
 
     // oppgave i)
     @Test
     void testFindAvgPower() {
         double average = 1.37;
-        double m_average = DailyPower.findAvgPower(test_powerusage);
-        assertEquals(average, m_average);
+        double t_average = DailyPower.findAvgPower(test_powerusage);
+        assertEquals(average, t_average);
     }
 }
