@@ -35,7 +35,6 @@ public class MonthlyPower {
 
     // c) compute total power usage for a month
     public static double computePowerUsage(double[][] usage) {
-        System.out.println("Total strømforbruk for måned");
         System.out.println("----------------------------");
 
         double sum = 0;
@@ -52,30 +51,28 @@ public class MonthlyPower {
     public static boolean exceedThreshold(double[][] powerusage, double threshold) {
 
         boolean exceeded = false;
-        double totalUsage = 0;
-
-        int day = 0;
-        while (day < powerusage.length){
-            int hour = 0;
-            while(hour <powerusage[day].length){
-                totalUsage +=powerusage[day][hour];
-                hour++;
-            }
-            if (totalUsage <threshold);
+        double usage = computePowerUsage(powerusage);
+        if(usage>threshold){
+            exceeded = true;
         }
 
-
-        // TODO
 
         return exceeded;
     }
 
     // e) compute spot price
     public static double computeSpotPrice(double[][] usage, double[][] prices) {
-
         double price = 0;
+        int day = 0;
+        while (day < usage.length){
+            int hour= 0;
+            while(hour < usage[day].length){
+                price += usage[day][hour] * prices[day][hour];
+                hour++;
+            }
+            day++;
 
-        // TODO
+        }
 
         return price;
     }
@@ -84,19 +81,22 @@ public class MonthlyPower {
     public static double computePowerSupport(double[][] usage, double[][] prices) {
 
         double support = 0;
+        int day = 0;
 
-        // TODO
-
+        while (day<usage.length) {
+            support += DailyPower.computePowerSupport(usage[day], prices[day]);
+            day++;
+        }
         return support;
     }
 
     // g) Norgesprice for the month
     public static double computeNorgesPrice(double[][] usage) {
-
         double price = 0;
+        for (double day[]:usage) {
+            price += DailyPower.computeNorgesPrice(day);
 
-        // TODO
-
+        }
         return price;
     }
 }
