@@ -6,14 +6,14 @@ public class MonthlyPower {
 
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
-            System.out.println("Strømforbruk for måneden:");
-            System.out.println("---------------------------");
+        System.out.println("Strømforbruk for måneden:");
+        System.out.println("---------------------------");
 
-            for (int day = 0; day < usage.length; day++) {
-                System.out.println("Dag " + (day + 1) + ":");
-                    DailyPower.printPowerUsage(usage[day]);
-                System.out.println();
-                System.out.println("---------------------------");
+        for (int day = 0; day < usage.length; day++) {
+            System.out.println("Dag " + (day + 1) + ":");
+            DailyPower.printPowerUsage(usage[day]);
+            System.out.println();
+            System.out.println("---------------------------");
         }
 
     }
@@ -35,7 +35,6 @@ public class MonthlyPower {
 
     // c) compute total power usage for a month
     public static double computePowerUsage(double[][] usage) {
-        System.out.println("----------------------------");
 
         double sum = 0;
         for (int day = 0; day < usage.length; day++) {
@@ -43,19 +42,18 @@ public class MonthlyPower {
                 sum += usage[day][hour];
             }
         }
+        sum = Math.round(sum * 100.0) / 100.0;
         return sum;
     }
-
 
     // d) determine whether a given threshold in powerusage for the month has been exceeded
     public static boolean exceedThreshold(double[][] powerusage, double threshold) {
 
         boolean exceeded = false;
         double usage = computePowerUsage(powerusage);
-        if(usage>threshold){
+        if (usage > threshold) {
             exceeded = true;
         }
-
 
         return exceeded;
     }
@@ -64,16 +62,16 @@ public class MonthlyPower {
     public static double computeSpotPrice(double[][] usage, double[][] prices) {
         double price = 0;
         int day = 0;
-        while (day < usage.length){
-            int hour= 0;
-            while(hour < usage[day].length){
+        while (day < usage.length) {
+            int hour = 0;
+            while (hour < usage[day].length) {
                 price += usage[day][hour] * prices[day][hour];
                 hour++;
             }
             day++;
 
         }
-
+        price = Math.round(price * 100.0) / 100.0;
         return price;
     }
 
@@ -83,20 +81,22 @@ public class MonthlyPower {
         double support = 0;
         int day = 0;
 
-        while (day<usage.length) {
+        while (day < usage.length) {
             support += DailyPower.computePowerSupport(usage[day], prices[day]);
             day++;
         }
+        support = Math.round(support * 100.0) / 100.0;
         return support;
     }
 
     // g) Norgesprice for the month
     public static double computeNorgesPrice(double[][] usage) {
         double price = 0;
-        for (double day[]:usage) {
+        for (double day[] : usage) {
             price += DailyPower.computeNorgesPrice(day);
 
         }
+        price = Math.round(price * 100.0) / 100.0;
         return price;
     }
 }
