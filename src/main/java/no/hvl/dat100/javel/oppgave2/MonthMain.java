@@ -44,7 +44,7 @@ public class MonthMain {
         double support=MonthlyPower.computePowerSupport(power_usage_monthly,power_prices_monthly);
         System.out.printf("Total strømstøtte for måneden %.2f",support);
         System.out.println("\n");
-        System.out.println("f) ");
+        System.out.println("g) ");
         double monthNorge = MonthlyPower.computeNorgesPrice(power_usage_month);
         System.out.printf("Norges pris er %.2f ",monthNorge);
 
